@@ -103,7 +103,7 @@ export default function Reviews() {
 
               {/* Review Comment */}
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                "{review.comment}"
+                &ldquo;{review.comment}&rdquo;
               </p>
 
               {/* Reviewer Info */}
@@ -124,7 +124,7 @@ export default function Reviews() {
         {/* Call to Action */}
         <div className="text-center mt-12">
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            Have you worked with Emmo? We'd love to hear from you!
+            Have you worked with Emmo? We&apos;d love to hear from you!
           </p>
           <a
             href="/contact"

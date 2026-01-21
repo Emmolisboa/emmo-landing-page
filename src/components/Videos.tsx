@@ -383,23 +383,22 @@ export default function Videos() {
             >
               <div className="relative aspect-video bg-gray-900 rounded-lg overflow-hidden">
                 {video.type === "youtube" ? (
-                  <img
+                  <Image
                     src={video.thumbnail || getYouTubeThumbnail(video.id)}
                     alt={video.title}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback to hqdefault if maxresdefault doesn't exist
-                      const target = e.target as HTMLImageElement;
-                      if (target.src.includes("maxresdefault")) {
-                        target.src = getYouTubeThumbnail(video.id, "hqdefault");
-                      }
-                    }}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 ) : thumbnails[video.id] ? (
-                  <img
+                  <Image
                     src={thumbnails[video.id]}
                     alt={video.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
