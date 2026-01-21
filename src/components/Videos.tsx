@@ -219,7 +219,7 @@ export default function Videos() {
 
     // Wait a bit before setting up observer to avoid interference with initial scroll
     const setupTimer = setTimeout(() => {
-      observer = new IntersectionObserver(
+      const newObserver = new IntersectionObserver(
         (entries) => {
           // Ignore observer callbacks if we're programmatically scrolling
           if (isScrollingProgrammatically.current) return;
@@ -258,10 +258,12 @@ export default function Videos() {
         }
       );
 
+      observer = newObserver;
+
       // Observe all video containers
       videoContainerRefs.current.forEach((container) => {
-        if (container) {
-          observer.observe(container);
+        if (container && newObserver) {
+          newObserver.observe(container);
         }
       });
     }, 500); // Wait 500ms after modal opens before enabling observer

@@ -65,6 +65,16 @@ const reviews: Review[] = [
 ];
 
 export default function Reviews() {
+  // Helper function to escape HTML entities in review comments
+  const escapeHtml = (text: string) => {
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&apos;');
+  };
+
   return (
     <section
       id="reviews"
@@ -103,7 +113,7 @@ export default function Reviews() {
 
               {/* Review Comment */}
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                &ldquo;{review.comment}&rdquo;
+                &quot;{escapeHtml(review.comment)}&quot;
               </p>
 
               {/* Reviewer Info */}
