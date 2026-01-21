@@ -17,6 +17,9 @@ export default function AnimatedSection({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -31,10 +34,7 @@ export default function AnimatedSection({
       }
     );
 
-    const element = ref.current;
-    if (element) {
-      observer.observe(element);
-    }
+    observer.observe(element);
 
     return () => {
       observer.disconnect();
